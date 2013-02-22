@@ -1,4 +1,6 @@
 class Spree::Admin::PromotionActionsController < Spree::Admin::BaseController
+  before_filter :validate_promotion_action_type, :only => :create
+
   def create
     @calculators = Spree::Promotion::Actions::CreateAdjustment.calculators
     @promotion = Spree::Promotion.find(params[:promotion_id])
@@ -22,6 +24,19 @@ class Spree::Admin::PromotionActionsController < Spree::Admin::BaseController
     respond_to do |format|
       format.html { redirect_to spree.edit_admin_promotion_path(@promotion)}
       format.js   { render :layout => false }
+    end
+  end
+
+  private
+
+  def validate_promotion_action_type
+    valid_promotion_action_types = Rails.application.config.spree.promotions.actions.map(&:to_s)
+    if !valid_promotion_action_types.include?(params[:action_type])
+      flash[:error] = t(:invalid_promotion_action)
+      respond_to do |format|
+        format.html { redirect_to spree.edit_admin_promotion_path(@promotion)}
+        format.js   { render :layout => false }
+      end
     end
   end
 end

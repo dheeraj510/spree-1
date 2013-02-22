@@ -6,7 +6,7 @@ module Spree
 
       protected
         def build_resource
-          if params[:promotion]
+          if params[:promotion] && Rails.application.config.spree.calculators.promotion_actions_create_adjustments.map(&:to_s).include?(params[:promotion][:calculator_type])
             calculator_type = params[:promotion].delete(:calculator_type)
             @promotion = Promotion.new(params[:promotion])
             if calculator_type

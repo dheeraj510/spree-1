@@ -1,6 +1,8 @@
 class Spree::Admin::PromotionRulesController < Spree::Admin::BaseController
   helper 'spree/promotion_rules'
 
+  before_filter :validate_promotion_rule_type, :only => :create
+
   def create
     @promotion = Spree::Promotion.find(params[:promotion_id])
     # Remove type key from this hash so that we don't attempt
@@ -27,6 +29,19 @@ class Spree::Admin::PromotionRulesController < Spree::Admin::BaseController
     respond_to do |format|
       format.html { redirect_to spree.edit_admin_promotion_path(@promotion)}
       format.js   { render :layout => false }
+    end
+  end
+
+  private
+
+  def validate_promotion_rule_type
+    valid_promotion_rule_types = Rails.application.config.spree.promotions.rules.map(&:to_s)
+    if !valid_promotion_rule_types.include?(params[:promotion_rule])
+      flash[:error] = t(:invalid_promotion_rule)
+      respond_to do |format|
+        format.html { redirect_to spree.edit_admin_promotion_path(@promotion)}
+        format.js   { render :layout => false }
+      end
     end
   end
 end

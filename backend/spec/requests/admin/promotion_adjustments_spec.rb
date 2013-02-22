@@ -110,7 +110,7 @@ describe "Promotion Adjustments" do
     it "should allow an admin to create an product promo with percent per item discount" do
       create(:product, :name => "RoR Mug")
 
-      fill_in "Name", :with => "Promotion" 
+      fill_in "Name", :with => "Promotion"
       select2 "Add to cart", :from => "Event Name"
       click_button "Create"
       page.should have_content("Editing Promotion")
@@ -250,6 +250,31 @@ describe "Promotion Adjustments" do
       within('#actions_container') { click_button "Update" }
       within('.calculator-fields') { fill_in "Amount", :with => "5" }
       within('#actions_container') { click_button "Update" }
+
+      promotion = Spree::Promotion.find_by_name("Promotion")
+      promotion.event_name.should == "spree.cart.add"
+
+      first_rule = promotion.rules.first
+      first_rule.class.should == Spree::Promotion::Rules::ItemTotal
+      first_rule.preferred_amount.should == 50
+
+      first_action = promotion.actions.first
+      first_action.class.should == Spree::Promotion::Actions::CreateAdjustment
+      first_action.calculator.class.should == Spree::Calculator::FlatRate
+      first_action.calculator.preferred_amount.should == 5
+    end
+
+    it "should not allow a promotion to have an invalid action created" do
+      fill_in "Name", :with => "Promotion"
+      select2 "Order contents changed", :from => "Event Name"
+      click_button "Create"
+      page.should have_content("Editing Promotion")
+
+      select2 "Create adjustment", :from => "Add action of type"
+      page.execute_script("$('select#action_type').val('invalid_action_type');")
+      within('#action_fields') { click_button "Add" }
+      visit current_path
+      save_and_open_page
 
       promotion = Spree::Promotion.find_by_name("Promotion")
       promotion.event_name.should == "spree.cart.add"
