@@ -1,10 +1,10 @@
 class Spree::Admin::PromotionRulesController < Spree::Admin::BaseController
   helper 'spree/promotion_rules'
 
+  before_filter :load_promotion, :only => [:create, :destroy]
   before_filter :validate_promotion_rule_type, :only => :create
 
   def create
-    @promotion = Spree::Promotion.find(params[:promotion_id])
     # Remove type key from this hash so that we don't attempt
     # to set it when creating a new record, as this is raises
     # an error in ActiveRecord 3.2.
@@ -21,7 +21,6 @@ class Spree::Admin::PromotionRulesController < Spree::Admin::BaseController
   end
 
   def destroy
-    @promotion = Spree::Promotion.find(params[:promotion_id])
     @promotion_rule = @promotion.promotion_rules.find(params[:id])
     if @promotion_rule.destroy
       flash[:success] = I18n.t(:successfully_removed, :resource => I18n.t(:promotion_rule))
@@ -34,9 +33,13 @@ class Spree::Admin::PromotionRulesController < Spree::Admin::BaseController
 
   private
 
+  def load_promotion
+    @promotion = Spree::Promotion.find(params[:promotion_id])
+  end
+
   def validate_promotion_rule_type
     valid_promotion_rule_types = Rails.application.config.spree.promotions.rules.map(&:to_s)
-    if !valid_promotion_rule_types.include?(params[:promotion_rule])
+    if !valid_promotion_rule_types.include?(params[:promotion_rule][:type])
       flash[:error] = t(:invalid_promotion_rule)
       respond_to do |format|
         format.html { redirect_to spree.edit_admin_promotion_path(@promotion)}
