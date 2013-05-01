@@ -1,4 +1,176 @@
 en:
+  account: 
+  actions:
+    cancel: 
+    create: 
+  add: 
+  add_one: 
+  add_product: 
+  add_to_cart: 
+  adjustments: 
+  administration: 
+  allow_ssl_in_development_and_test: 
+  allow_ssl_in_production: 
+  allow_ssl_in_staging: 
+  amount: 
+  analytics_trackers: 
+  are_you_sure: 
+  are_you_sure_delete: 
+  available_on: 
+  back_to_orders_list: 
+  back_to_users_list: 
+  bill_address: 
+  billing_address: 
+  cancel: 
+  cart: 
+  check_for_spree_alerts: 
+  checkout: 
+  choose_a_customer: 
+  choose_currency: 
+  choose_dashboard_locale: 
+  clone: 
+  close_all_adjustments: 
+  configuration: configuration
+  configurations: 
+  confirm_delete: 
+  confirm_password: 
+  continue: 
+  continue_shopping: 
+  count_on_hand: 
+  countries: 
+  coupon_code: 
+  create: 
+  create_a_new_account: 
+  currency_decimal_mark: 
+  currency_settings: 
+  currency_symbol_position: 
+  currency_thousands_separator: 
+  customer_details: 
+  customer_search: 
+  cut: 
+  date_range: 
+  default_meta_description: 
+  default_meta_keywords: 
+  default_seo_title: 
+  delete: 
+  description: 
+  destroy: 
+  display_currency: 
+  edit: 
+  email: 
+  empty: 
+  empty_cart: 
+  events:
+    spree:
+      cart:
+        add: 
+      checkout:
+        coupon_code_added: 
+      content:
+        visited: 
+      order:
+        contents_changed: 
+      user:
+        signup: 
+  filter_results: 
+  first_name_begins_with: 
+  forgot_password: 
+  general_settings: 
+  guest_checkout: 
+  hide_cents: 
+  i18n:
+    transliterate:
+      rule: {}
+  image_settings: 
+  item: 
+  jirafe: 
+  js_format: yy/mm/dd
+  last_name_begins_with: 
+  listing_orders: 
+  listing_products: 
+  listing_reports: 
+  listing_users: 
+  loading: 
+  location: 
+  look_for_similar_items: 
+  mail_method_settings: 
+  master_price: 
+  more: 
+  my_account: 
+  name: 
+  name_or_sku: 
+  new_adjustment: 
+  new_customer: 
+  new_option_type: 
+  new_order: 
+  new_product: 
+  new_promotion: 
+  new_property: 
+  new_prototype: 
+  new_user: 
+  next: 
+  no_orders_found: 
+  no_promotions_found: 
+  no_results: 
+  open_all_adjustments: 
+  option_types: option_types
+  or: 
+  order: 
+  order_details: 
+  order_has_on_payments: 
+  order_information: 
+  order_number: 
+  order_state:
+    address: 
+    awaiting_return: 
+    canceled: 
+    cart: 
+    complete: 
+    confirm: 
+    delivery: 
+    payment: 
+    resumed: 
+    returned: 
+  order_total: 
+  orders: orders
+  overview: overview
+  password: 
+  paste: 
+  payment_methods: 
+  payments: 
+  powered_by: 
+  presentation: 
+  previous: 
+  price: 
+  products: products
+  promotions: promotions
+  properties: properties
+  prototype: 
+  prototypes: prototypes
+  qty: 
+  quantity: 
+  remember_me: 
+  remove: 
+  rename: 
+  reports: reports
+  resend: 
+  roles: 
+  sales_total: 
+  sales_total_description: 
+  say_no: 
+  say_yes: 
+  search: 
+  searching: 
+  security_settings: 
+  select_stock: 
+  shipping_categories: 
+  shipping_methods: 
+  shopping_cart: 
+  show_deleted: 
+  show_only_complete_orders: 
+  site_name: 
+  site_url: 
+  sku: 
   spree:
     abbreviation: Abbreviation
     account: Account
@@ -370,6 +542,7 @@ en:
     customer_details: Customer Details
     customer_search: Customer Search
     cut: Cut
+    date: 
     date_completed: Date Completed
     date_range: Date Range
     default: Default
@@ -888,6 +1061,7 @@ en:
     thank_you_for_your_order: Thank you for your business.  Please print out a copy of this confirmation page for your records.
     there_were_problems_with_the_following_fields: There were problems with the following fields
     thumbnail: Thumbnail
+    time: 
     to_add_variants_you_must_first_define: To add variants, you must first define
     total: Total
     tracking: Tracking
@@ -935,3 +1109,26 @@ en:
     zip: Zip
     zone: Zone
     zones: Zones
+  start: 
+  state: 
+  states: 
+  status: 
+  stock_locations: 
+  stop: 
+  store: 
+  subtotal: 
+  tax_categories: 
+  tax_rates: 
+  tax_settings: 
+  taxon_placeholder: 
+  taxonomies: 
+  total: 
+  type_to_search: 
+  update: 
+  user: 
+  users: users
+  validation:
+    must_be_int: 
+  value: 
+  your_cart_is_empty: 
+  zones: 
